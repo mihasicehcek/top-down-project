@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AttributeSet.h"
 #include "TopDownAttributeSet.h"
 #include "DamageAttributeSet.generated.h"
 
