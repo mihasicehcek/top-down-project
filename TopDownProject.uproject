@@ -7,7 +7,7 @@
 		{
 			"Name": "TopDownProject",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "PostEngineInit"
 		}
 	],
 	"Plugins": [

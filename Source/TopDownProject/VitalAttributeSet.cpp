@@ -7,8 +7,6 @@ void UVitalAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute,
 {
 	if(Attribute == GetHealthAttribute()){
 		NewValue = FMath::Clamp(NewValue, 0, MaxHealth.GetCurrentValue());
-	}else if(Attribute == GetManaAttribute()){
-		NewValue = FMath::Clamp(NewValue, 0, MaxMana.GetCurrentValue());
 	}
 }
 

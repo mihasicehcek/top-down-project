@@ -23,13 +23,5 @@ public:
 	FGameplayAttributeData MaxHealth;
 	ATTRIBUTE_ACCESSORS(UVitalAttributeSet, MaxHealth)
 	
-	UPROPERTY(BlueprintReadOnly)
-	FGameplayAttributeData Mana;
-	ATTRIBUTE_ACCESSORS(UVitalAttributeSet, Mana)
-	
-	UPROPERTY(BlueprintReadOnly)
-	FGameplayAttributeData MaxMana;
-	ATTRIBUTE_ACCESSORS(UVitalAttributeSet, MaxMana)
-	
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
 };
