@@ -6,7 +6,6 @@
 #include "TopDownPlayerState.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Camera/CameraComponent.h"
-#include "Components/DecalComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerController.h"
@@ -46,6 +45,12 @@ ATopDownProjectCharacter::ATopDownProjectCharacter()
 	// Activate ticking in order to update the cursor every frame.
 	PrimaryActorTick.bCanEverTick = true;
 	PrimaryActorTick.bStartWithTickEnabled = true;
+
+	// static ConstructorHelpers::FObjectFinder<UInputAction> IA_StartEndCast_OBJ(TEXT("/Game/Input/IA_StartEndCast"));
+	// if (IA_StartEndCast_OBJ.Succeeded())
+	// {
+	// 	IA_StartEndCast = IA_StartEndCast_OBJ.Object;
+	// }
 }
 
 void ATopDownProjectCharacter::Tick(float DeltaSeconds)
