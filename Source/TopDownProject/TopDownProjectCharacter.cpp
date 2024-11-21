@@ -51,6 +51,7 @@ ATopDownProjectCharacter::ATopDownProjectCharacter()
 	// {
 	// 	IA_StartEndCast = IA_StartEndCast_OBJ.Object;
 	// }
+	LocalAbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
 }
 
 void ATopDownProjectCharacter::Tick(float DeltaSeconds)
@@ -64,7 +65,7 @@ UAbilitySystemComponent* ATopDownProjectCharacter::GetAbilitySystemComponent() c
 	{
 		return TopDownPlayerState->GetAbilitySystemComponent();
 	}
-	return nullptr;
+	return LocalAbilitySystemComponent;
 }
 
 void ATopDownProjectCharacter::PossessedBy(AController* NewController)

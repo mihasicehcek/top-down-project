@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
 #include "InputAction.h"
+#include "SpellComponent.h"
 #include "Abilities/GameplayAbility.h"
 #include "FSpell.generated.h"
 
@@ -33,5 +34,5 @@ public:
 	bool CreateSpellAbility(TSubclassOf<UGameplayAbility>& OutAbilityReference);
 
 	UFUNCTION(BlueprintCallable, Category = "Spell")
-	static bool CreateSpell(const TArray<UInputAction*>& InputActions, UFSpell*& OutSpell);
+	static bool CreateSpell(const TArray<USpellComponent*>& InputActions, UFSpell*& OutSpell);
 };

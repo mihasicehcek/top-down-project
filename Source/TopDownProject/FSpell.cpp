@@ -31,14 +31,14 @@ bool UFSpell::CreateSpellAbility(TSubclassOf<UGameplayAbility>& OutAbilityRefere
     return false;
 }
 
-bool UFSpell::CreateSpell(const TArray<UInputAction*>& InputActions, UFSpell*& OutSpell)
+bool UFSpell::CreateSpell(const TArray<USpellComponent*>& InputActions, UFSpell*& OutSpell)
 {
     if (!OutSpell)
     {
         OutSpell = NewObject<UFSpell>();
         if (!OutSpell)
         {
-            return false; // Возвращаем false, если создание объекта не удалось
+            return false;
         }
     }
     
@@ -61,24 +61,24 @@ bool UFSpell::CreateSpell(const TArray<UInputAction*>& InputActions, UFSpell*& O
         return false;
     }
 
-    if (InputActions[0]->GetName() != "IA_SelectElement")
+    if (InputActions[0]->Component != "IA_SelectElement")
     {
         return false;
     }
 
-    if (int32* FoundValue = ReplacementMap.Find(InputActions[1]->GetName()))
+    if (int32* FoundValue = ReplacementMap.Find(InputActions[1]->Component))
     {
         OutSpell->Element = *FoundValue;
     }else{
         return false;
     }
 
-    if (InputActions[2]->GetName() != "IA_SelectForm")
+    if (InputActions[2]->Component != "IA_SelectForm")
     {
         return false;
     }
 
-    if (int32* FoundValue = ReplacementMap.Find(InputActions[3]->GetName()))
+    if (int32* FoundValue = ReplacementMap.Find(InputActions[3]->Component))
     {
         OutSpell->Form = *FoundValue;
     }else{
@@ -89,9 +89,9 @@ bool UFSpell::CreateSpell(const TArray<UInputAction*>& InputActions, UFSpell*& O
     {
         for (int i = 5; i < InputActions.Num(); i += 2)
         {
-            if (int32* ParameterId = ReplacementMap.Find(InputActions[i]->GetName()))
+            if (int32* ParameterId = ReplacementMap.Find(InputActions[i]->Component))
             {
-                if (int32* ParameterValue = ReplacementParameterMap.Find(InputActions[i + 1]->GetName()))
+                if (int32* ParameterValue = ReplacementParameterMap.Find(InputActions[i + 1]->Component))
                 {
                     if (int32* FoundValue = OutSpell->Parameters.Find(*ParameterId))
                     {
